@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 
  * Controlador REST para gestión de usuarios
  * 
  * Este controlador expone los endpoints para todas las operaciones
@@ -33,7 +34,6 @@ import java.util.Map;
 @Slf4j
 @CrossOrigin(origins = "${cors.allowed-origins:http://localhost:4200}")
 public class UsuarioControlador {
-
     private final UsuarioServicio usuarioServicio;
 
     /**
