@@ -35,6 +35,7 @@ import java.util.Map;
 @CrossOrigin(origins = "${cors.allowed-origins:http://localhost:4200}")
 public class UsuarioControlador {
     private final UsuarioServicio usuarioServicio;
+    /**Prueba */
 
     /**
      * Obtiene todos los usuarios del sistema
