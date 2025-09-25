@@ -1,0 +1,20 @@
+echo "# Carpetas de compilación
+target/
+.gradle/
+.idea/
+.vscode/settings.json
+
+# Node modules
+node_modules/
+
+# Logs y temporales
+*.log
+*.tmp
+
+# Compilados Java
+*.class
+*.jar
+
+# Sistema
+.DS_Store
+" > .gitignore

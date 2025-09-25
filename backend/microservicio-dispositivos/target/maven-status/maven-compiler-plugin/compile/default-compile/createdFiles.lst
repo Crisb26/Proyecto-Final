@@ -1,0 +1,8 @@
+com\innoad\dispositivos\modelo\OrientacionPantalla.class
+com\innoad\dispositivos\repositorio\DispositivoRepositorio.class
+com\innoad\dispositivos\modelo\EstadoDispositivo.class
+com\innoad\dispositivos\modelo\TipoContenido.class
+com\innoad\dispositivos\MicroservicioDispositivosApplication.class
+com\innoad\dispositivos\modelo\DispositivoRaspberry.class
+com\innoad\dispositivos\modelo\ContenidoPublicidad.class
+com\innoad\dispositivos\modelo\ContenidoPublicidad$1.class

@@ -1,0 +1,39 @@
+# InnoAd Cliente Raspberry Pi - Servicio Systemd
+# Archivo: /etc/systemd/system/innoad-cliente.service
+
+[Unit]
+Description=Cliente InnoAd para Raspberry Pi
+Documentation=https://github.com/innoad/raspberry-client
+After=network.target network-online.target
+Wants=network-online.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+WorkingDirectory=/opt/innoad
+Environment=INNOAD_SERVER=ws://TU_SERVIDOR_INNOAD:8086/websocket/raspberry
+Environment=CONTENT_DIR=/opt/innoad/content
+Environment=LOGS_DIR=/opt/innoad/logs
+Environment=CONFIG_DIR=/opt/innoad/config
+ExecStart=/usr/bin/python3 /opt/innoad/main.py
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=innoad-cliente
+
+# Límites de recursos
+LimitNOFILE=65536
+TimeoutStopSec=30
+
+# Seguridad
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/opt/innoad
+
+[Install]
+WantedBy=multi-user.target

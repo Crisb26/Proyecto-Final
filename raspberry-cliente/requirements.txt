@@ -1,0 +1,36 @@
+# InnoAd Cliente Raspberry Pi - Dependencias Python
+
+# Cliente WebSocket
+websockets==11.0.3
+asyncio-mqtt==0.13.0
+
+# Monitoreo del sistema
+psutil==5.9.5
+
+# HTTP requests
+requests==2.31.0
+urllib3==2.0.7
+
+# Utilidades
+python-dateutil==2.8.2
+pathlib2==2.3.7
+
+# Logs mejorados
+colorlog==6.7.0
+
+# Configuración
+python-dotenv==1.0.0
+configparser==6.0.0
+
+# Procesamiento de archivos multimedia
+Pillow==10.0.1
+
+# GPIO para Raspberry Pi (opcional)
+RPi.GPIO==0.7.1; platform_machine=="armv7l" or platform_machine=="armv6l"
+
+# Sistema
+supervisor==4.2.5  # Para gestión de procesos
+
+# Testing (desarrollo)
+pytest==7.4.3
+pytest-asyncio==0.21.1

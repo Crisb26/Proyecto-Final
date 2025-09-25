@@ -1,0 +1,109 @@
+{
+  "app": {
+    "title": "InnoAd",
+    "subtitle": "Gestión de Campañas Publicitarias",
+    "version": "v1.0.0"
+  },
+  "navigation": {
+    "dashboard": "Panel Principal",
+    "campaigns": "Campañas",
+    "devices": "Dispositivos",
+    "meetings": "Reuniones", 
+    "tasks": "Tareas",
+    "users": "Usuarios",
+    "audit": "Auditoría",
+    "analytics": "Análisis IA",
+    "settings": "Configuración",
+    "logout": "Cerrar Sesión"
+  },
+  "dashboard": {
+    "title": "Panel Principal",
+    "welcome": "Bienvenido a InnoAd",
+    "activeCampaigns": "Campañas Activas",
+    "connectedDevices": "Dispositivos Conectados",
+    "pendingTasks": "Tareas Pendientes",
+    "recentActivity": "Actividad Reciente"
+  },
+  "campaigns": {
+    "title": "Gestión de Campañas",
+    "create": "Crear Campaña",
+    "edit": "Editar Campaña",
+    "delete": "Eliminar Campaña",
+    "status": {
+      "draft": "Borrador",
+      "active": "Activa",
+      "paused": "Pausada",
+      "finished": "Finalizada"
+    },
+    "fields": {
+      "name": "Nombre",
+      "description": "Descripción", 
+      "startDate": "Fecha Inicio",
+      "endDate": "Fecha Fin",
+      "budget": "Presupuesto",
+      "platform": "Plataforma",
+      "objective": "Objetivo"
+    }
+  },
+  "devices": {
+    "title": "Dispositivos Raspberry Pi",
+    "connected": "Conectados",
+    "disconnected": "Desconectados",
+    "sendContent": "Enviar Contenido",
+    "restart": "Reiniciar",
+    "updateConfig": "Actualizar Configuración",
+    "status": {
+      "online": "En Línea",
+      "offline": "Fuera de Línea",
+      "error": "Error",
+      "maintenance": "Mantenimiento",
+      "playing": "Reproduciendo"
+    },
+    "fields": {
+      "name": "Nombre",
+      "location": "Ubicación",
+      "ipAddress": "Dirección IP",
+      "lastHeartbeat": "Último Heartbeat",
+      "version": "Versión Software"
+    }
+  },
+  "content": {
+    "title": "Gestión de Contenido",
+    "upload": "Subir Contenido",
+    "schedule": "Programar",
+    "preview": "Vista Previa",
+    "types": {
+      "image": "Imagen",
+      "video": "Video", 
+      "web": "Página Web",
+      "html": "HTML Personalizado"
+    }
+  },
+  "common": {
+    "actions": {
+      "create": "Crear",
+      "edit": "Editar", 
+      "delete": "Eliminar",
+      "save": "Guardar",
+      "cancel": "Cancelar",
+      "search": "Buscar",
+      "filter": "Filtrar",
+      "export": "Exportar",
+      "import": "Importar"
+    },
+    "status": {
+      "active": "Activo",
+      "inactive": "Inactivo",
+      "pending": "Pendiente",
+      "completed": "Completado",
+      "error": "Error"
+    },
+    "messages": {
+      "loading": "Cargando...",
+      "noData": "No hay datos disponibles",
+      "success": "Operación exitosa",
+      "error": "Ha ocurrido un error",
+      "confirmDelete": "¿Está seguro que desea eliminar este elemento?"
+    }
+  }
+}

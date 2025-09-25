@@ -1,0 +1,149 @@
+# InnoAd - Configuración del Microservicio de Usuarios
+# Archivo principal de configuración para desarrollo local y Railway
+
+server:
+  port: ${PUERTO_USUARIOS:8081}
+  servlet:
+    context-path: /
+  error:
+    include-message: always
+    include-binding-errors: always
+
+spring:
+  application:
+    name: microservicio-usuarios
+
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:desarrollo}
+
+  # Configuración de Base de Datos Railway MySQL
+  datasource:
+    url: ${DATABASE_URL:jdbc:mysql://localhost:3306/innoad}
+    username: ${DATABASE_USERNAME:root}
+    password: ${DATABASE_PASSWORD:password}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      connection-timeout: 20000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+
+  # Configuración JPA/Hibernate
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: validate  # Cambiar a 'update' solo para desarrollo inicial
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+
+  # Configuración de Seguridad JWT
+  security:
+    jwt:
+      secret: ${JWT_SECRET:innoad-clave-secreta-muy-segura-2024}
+      expiration: ${JWT_EXPIRATION:86400000}  # 24 horas
+      refresh-expiration: ${JWT_REFRESH_EXPIRATION:604800000}  # 7 días
+
+# Configuración de Logging
+logging:
+  level:
+    com.innoad: INFO
+    org.springframework.security: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: logs/usuarios-service.log
+
+# Configuración de CORS
+cors:
+  allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:4200}
+  allowed-methods: GET,POST,PUT,PATCH,DELETE,OPTIONS
+  allowed-headers: "*"
+  allow-credentials: true
+
+# Configuración de Management/Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: when-authorized
+  info:
+    env:
+      enabled: true
+
+# Información de la aplicación
+info:
+  app:
+    name: InnoAd Microservicio Usuarios
+    description: Servicio de gestión de usuarios y autenticación
+    version: 1.0.0
+    team: SENA ADSO
+
+# Configuración personalizada de InnoAd
+innoad:
+  security:
+    max-login-attempts: 5
+    lockout-duration-minutes: 15
+    session-timeout-minutes: 60
+  usuarios:
+    default-role: VIEWER
+    require-email-verification: false
+    password-policy:
+      min-length: 8
+      require-uppercase: true
+      require-lowercase: true
+      require-numbers: true
+      require-symbols: false
+
+---
+# Perfil para Railway (Producción)
+spring:
+  config:
+    activate:
+      on-profile: railway
+
+  datasource:
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+
+logging:
+  level:
+    com.innoad: INFO
+    org.springframework.security: WARN
+    org.hibernate.SQL: WARN
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+---
+# Perfil para desarrollo local
+spring:
+  config:
+    activate:
+      on-profile: desarrollo
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/innoad?useSSL=false&serverTimezone=UTC
+    username: root
+    password: password
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true

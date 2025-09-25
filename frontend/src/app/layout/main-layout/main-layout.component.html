@@ -1,0 +1,36 @@
+<!-- InnoAd - Layout Principal -->
+<mat-sidenav-container class="sidenav-container">
+
+  <!-- Sidebar -->
+  <mat-sidenav 
+    #sidenav 
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="sidenavMode"
+    [opened]="sidenavOpened">
+
+    <app-sidebar></app-sidebar>
+
+  </mat-sidenav>
+
+  <!-- contenido principal -->
+  <mat-sidenav-content>
+
+    <!-- header -->
+    <app-header 
+      [sidenavToggle]="sidenav"
+      (menuClick)="toggleSidenav()">
+    </app-header>
+
+    <!-- area de Contenido -->
+    <main class="main-content">
+      <router-outlet></router-outlet>
+    </main>
+
+    <!-- footer -->
+    <app-footer></app-footer>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
